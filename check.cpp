@@ -1,6 +1,6 @@
 #include"function_declare.h"
 
-bool checkColor(Mat * img, Point2i center, double r_d,double proportion)
+bool checkColor(Mat * img, Point2i &center, double r_d,double proportion)
 {
 	double dx;
 	double dy;

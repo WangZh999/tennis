@@ -1,8 +1,8 @@
 #include"function_declare.h"
 
-void edge2list(vector<vector<Point>>& contours_dst, Mat & img, vector<Vec4i> hierarchy)
+void edge2list(vector<vector<Point>>& contours_dst, Mat & img, vector<Vec4i>& hierarchy)
 {
-	vector<vector<Point>> contours_src;
+	vector<vector<Point> > contours_src;
 	findContours(img, contours_src, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_NONE);
 	for (int i = 0; i < contours_src.size(); i++)
 	{
@@ -21,10 +21,17 @@ void edge2list(vector<vector<Point>>& contours_dst, Mat & img, vector<Vec4i> hie
 	}
 }
 
-void drawContour(Mat img, vector<vector<Point>>contours, Scalar color)
+void drawContour(Mat & img, vector<vector<Point>>&contours,int type, Scalar color)
 {
-	for (int i = 0; i < contours.size(); i++)
+	//for (int i = 0; i < contours.size(); i++)
+	//{
+	//	for (int k = 0; k < contours[i].size(); k++) {
+	//		circle(img, contours[i][k], 0, color);
+	//	}
+	//}
+	for (size_t i = 0; i< contours.size(); i++)
 	{
-		drawContours(img, contours, i, color);
+		drawContours(img, contours, (int)i, color, type, 8);
+		//drawContours(img, contours, (int)i, color, 1, 8);
 	}
 }
