@@ -24,10 +24,10 @@ bool checkColor(Mat * img, Point2i &center, double r_d,double proportion)
 			dy = abs(y - i);
 			d = sqrt(dx*dx + dy*dy);
 
-			if (d < r_d) {//鈺樷枔鈺ㄢ暚鈺栤暍鈺衡攢鈹
+			if (d < r_d) {
 				unsigned char* srcData = img->ptr(i);
 
-				//鈹封暙蟺鈺♀攢鈺犫尅鈺濃枲
+				
 				if ((srcData[3 * j + 2] - srcData[3 * j] <= maxR_B)&(srcData[3 * j + 2] - srcData[3 * j] >= minR_B))
 					if ((srcData[3 * j + 1] - srcData[3 * j] <= maxG_B)&(srcData[3 * j + 1] - srcData[3 * j] >= minG_B))
 						if ((srcData[3 * j] >= minB)&(srcData[3 * j] <= maxB))

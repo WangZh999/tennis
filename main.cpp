@@ -20,14 +20,14 @@ void main()
 	edge(src, edge_img);
 	imshow("edge", edge_img);
 	edge2list(contours_dst, edge_img, hierarchy);
-	drawContour(list_filled_img, contours_dst,FILLED);
+	drawContour(list_filled_img, contours_dst);
 	namedWindow("list");
 	imshow("list", list_filled_img);
-	Canny(list_filled_img, edge_img2, 100, 200);
+	/*Canny(list_filled_img, edge_img2, 100, 200);
 
 	edge2list(contours_dst2, edge_img2, hierarchy2);
 	drawContour(list_img, contours_dst2);
-	imshow("list2", list_img);
+	imshow("list2", list_img);*/
 
 	waitKey();
 }

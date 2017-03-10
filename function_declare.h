@@ -22,6 +22,10 @@
 #define maxR_B   (uchar)255
 #define minR_B   (uchar)0
 
+#define THRESHOLD 110
+
+#define uchar unsigned char
+
 /*提取边缘，src为单通道，dst为二值图像*/
 void edge(Mat &src, Mat &dst);
 /*将边缘信息存入向量*/
@@ -30,6 +34,8 @@ void edge2list(vector<vector<Point>> & contours_des, Mat & img, vector<Vec4i> &h
 void drawContour(Mat& img, vector<vector<Point>> &contours, int type = 1, Scalar color = Scalar(255));
 /*检查一定半径的圆形的范围的颜色信息是否符合要求*/
 bool checkColor(Mat * img, Point2i &center, double r_d, double proportion = 0.5);
+
+bool calcCenter(vector<Point> &contour, Point &center);
 
 #endif // !FUNCTION_DECLARE_H
 
