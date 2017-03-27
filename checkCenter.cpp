@@ -1,6 +1,6 @@
 #include"function_declare.h"
 
-#define THRESHOL_CLASS (double)2.3
+#define THRESHOL_CLASS (double)30
 
 
 bool calcCenter(vector<Point> &contour, Point &center) {
@@ -10,10 +10,10 @@ bool calcCenter(vector<Point> &contour, Point &center) {
 	int x_fin, y_fin;
 	double dis_all = 0;
 	float dis = 0, dis_2;
-	for (int i = 1; i<contour.size(); i++) {
-		x = contour[i].x;
-		y = contour[i].y;
 
+	x = contour[0].x;
+	y = contour[0].y;
+	for (int i = 1; i<contour.size(); i++) {
 		x1 = contour[i].x;
 		y1 = contour[i].y;
 		dis_2 = (x1 - x)*(x1 - x) + (y1 - y)*(y1 - y);
@@ -37,7 +37,7 @@ bool calcCenter(vector<Point> &contour, Point &center) {
 	float r = dis_all / distance.size();
 	dis_all = 0;
 	for (int i = 0; i<distance.size(); i++) {
-		dis_all += abs(distance[i] - r);
+		dis_all += abs(distance[i] - r);// *(distance[i] - r);
 	}
 	double dis_class = dis_all / distance.size();
 	if (dis_class<THRESHOL_CLASS) {
@@ -50,14 +50,18 @@ bool calcCenter(vector<Point> &contour, Point &center) {
 
 
 vector<Point> checkCircle(vector<vector<Point>> &contours) {
-	Point point;
+	Point point = Point(0, 0);
+	Mat src = imread("ball.jpg", 0);
 	vector<Point> points;
 	for (int i = 0; i < contours.size(); i++)
 	{
 		if (calcCenter(contours[i], point)) {
 			points.push_back(point);
+			circle(src, point, 2, Scalar(0), 3);
 		}
 	}
+	//imshow("center", src);
+	//waitKey();
 	return points;
 }
 

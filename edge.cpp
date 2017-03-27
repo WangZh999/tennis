@@ -15,7 +15,7 @@ void edge(Mat &src, Mat &dst)
 	bilateralFilter(src, filter_img, 5, 70, 70);
 	Canny(filter_img, dst, 50, 150);
 	threshold(src, out3, THRESHOLD, 255, THRESH_BINARY);
-	imshow("threshold", out3);
+	//imshow("threshold", out3);
 	for (int i = 0; i < dst.rows; i++)
 	{
 		dst_data = dst.ptr(i);

@@ -37,5 +37,6 @@ bool checkColor(Mat * img, Point2i &center, double r_d, double proportion = 0.5)
 
 bool calcCenter(vector<Point> &contour, Point &center);
 
+vector<Point> checkCircle(vector<vector<Point>> &contours);
 #endif // !FUNCTION_DECLARE_H
 
